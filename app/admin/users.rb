@@ -2,6 +2,9 @@
 
 ActiveAdmin.register User do
   permit_params :title, :body
+  filter :name
+  filter :country
+  filter :score
 
   index do
     column :name
