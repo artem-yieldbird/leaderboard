@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
-class UpdateRandomUser < ApplicationJob
-  queue_as :default
+class UpdateRandomUserJob
+  include Sidekiq::Job
 
   def perform
     while true do
