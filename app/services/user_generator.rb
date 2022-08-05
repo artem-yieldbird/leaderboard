@@ -10,11 +10,11 @@ class UserGenerator
     n.times.map { user_string }.join(DIVIDER)
   end
 
+  private
+
   def self.user_string
     "('#{name}', '#{country}', #{score}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"
   end
-
-  private
 
   def self.country
     User::COUNTRY_CODES.sample
