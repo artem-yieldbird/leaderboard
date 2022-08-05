@@ -3,7 +3,7 @@
 class Leaders
   attr_reader :country
 
-  def initialize(country)
+  def initialize(country = nil)
     @country = country
   end
 
