@@ -25,6 +25,6 @@ class UserGenerator
   end
 
   def self.score
-    rand 150..150_000_000
+    rand 150..1_000_000
   end
 end
