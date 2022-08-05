@@ -1,15 +1,17 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  def world_leaders
-    render json: User.order(score: :desc).limit(100)
-  end
+  before_action :leaders
 
-  def country_leaders
-    render json: CountryLeaders.new(user_params[:country]).call
+  def show
+    render json: leaders
   end
 
   private
+
+  def leaders
+    @leaders ||= Leaders.new(user_params[:country]).call
+  end
 
   def user_params
     params.permit(:country)
