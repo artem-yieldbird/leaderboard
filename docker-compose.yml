@@ -1,7 +1,6 @@
 version: '2.6.1'
 services:
   leaderboard_db:
-    container_name: leaderboard_db
     image: postgres
     env_file: .env.development
     volumes:
@@ -9,9 +8,8 @@ services:
     ports:
       - "5432:5432"
   leaderboard:
-    container_name: leaderboard
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0' && bundle exec sidekiq && rake users:start_update_random_user_job"
     volumes:
       - .:/leaderboard
     ports:
