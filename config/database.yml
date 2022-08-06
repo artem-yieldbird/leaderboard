@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
-  database: leaderboard_production
-  username: leaderboard
-  password: <%= ENV["LEADERBOARD_DATABASE_PASSWORD"] %>
+  database: <%= ENV["DATABASE_NAME"] %>
+  username: <%= ENV["DATABASE_USER"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+  host: <%= ENV['DATABASE_HOST'] %>
