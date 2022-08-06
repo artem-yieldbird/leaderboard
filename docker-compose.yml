@@ -3,11 +3,11 @@ services:
   leaderboard_db:
     container_name: leaderboard_db
     image: postgres
-    env_file: .env.production
+    env_file: .env.development
     volumes:
       - postgres:/var/lib/postgresql/data
     ports:
-      - "5099:5432"
+      - "5432:5432"
   leaderboard:
     container_name: leaderboard
     build: .
@@ -18,6 +18,6 @@ services:
       - "3000:3000"
     depends_on:
       - leaderboard_db
-    env_file: .env.production
+    env_file: .env.development
 volumes:
   postgres:
