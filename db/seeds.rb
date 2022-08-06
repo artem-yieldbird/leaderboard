@@ -8,10 +8,17 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+# 1500.times do
+#   ActiveRecord::Base.connection.execute <<-SQL
+#     INSERT INTO users (name,country,score,created_at,updated_at) VALUES
+#     #{UserGenerator.generate(100_000)}
+#   SQL
+# end
+
 1.times do
   ActiveRecord::Base.connection.execute <<-SQL
     INSERT INTO users (name,country,score,created_at,updated_at) VALUES
-    #{UserGenerator.generate(100_000)}
+    #{UserGenerator.generate(10_000)}
   SQL
 end
 
